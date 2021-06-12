@@ -16,8 +16,8 @@
     <script type="text/javascript">
       let command = window.location.hash.substr(1)
       if (command.startsWith("sms:")) {
-        // sms:+18664504185&body=
-        let href = command.replace(/[^0-9A-Za-z+&=: ,.]+/g, '')
+        // sms:+18664504185?body=
+        let href = command.replace(/[^0-9A-Za-z+?&=: ,.]+/g, '')
         let number = /[0-9]+/.exec(href)
         document.body.innerHTML +=  `
         <a href=${href}>Text ${number}</a>
