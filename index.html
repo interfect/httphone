@@ -23,7 +23,7 @@
         <a href=${href}>Text ${number}</a>
         `
       } else {
-        let number = command.replace(/[^0-9+]+/g, '')
+        let number = command.replace(/[^0-9+,;]+/g, '')
         let href = "tel:" + number
         document.body.innerHTML +=  `
         <a href=${href}>Call ${number}</a>
