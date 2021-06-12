@@ -14,9 +14,9 @@
       }
     </style>
     <script type="text/javascript">
-      let number = window.location.hash.substr(1)
+      let number = window.location.hash.substr(1).replace(/[^0-9+-]+/g, '')
       let href = "tel:" + number
-      document.body.innerHTML =  `
+      document.body.innerHTML +=  `
       <a href=${href}>Call ${number}</a>
       `
     </script>
