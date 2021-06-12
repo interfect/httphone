@@ -14,11 +14,21 @@
       }
     </style>
     <script type="text/javascript">
-      let number = window.location.hash.substr(1).replace(/[^0-9+-]+/g, '')
-      let href = "tel:" + number
-      document.body.innerHTML +=  `
-      <a href=${href}>Call ${number}</a>
-      `
+      let command = window.location.hash.substr(1)
+      if (command.startsWith("sms:")) {
+        // sms:+18664504185&body=
+        let href = command.replace(/[^0-9A-Za-z+&=: ,.]+/g, '')
+        let number = /[0-9]+/.exec(href)
+        document.body.innerHTML +=  `
+        <a href=${href}>Text ${number}</a>
+        `
+      } else {
+        let number = command.replace(/[^0-9+]+/g, '')
+        let href = "tel:" + number
+        document.body.innerHTML +=  `
+        <a href=${href}>Call ${number}</a>
+        `
+      }
     </script>
   </body>
 </html>
