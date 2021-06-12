@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <script type="text/javascript">
+      let number = window.location.hash.substr(1)
+      let href = "tel:" + number
+      document.body.innerHTML =  `
+      <a href=${href}>Call ${number}</a>
+      `
+    </script>
+  </body>
+</html>
