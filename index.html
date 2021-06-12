@@ -19,9 +19,17 @@
         // sms:+18664504185?body=
         let href = command.replace(/[^0-9A-Za-z+?&=: ,.]+/g, '')
         let number = /[0-9]+/.exec(href)
-        document.body.innerHTML +=  `
-        <a href=${href}>Text ${number}</a>
-        `
+        let body_match = /body=(.*)/.exec(href)
+        if (body_match) {
+          let body = body_match[1]
+          document.body.innerHTML +=  `
+          <a href=${href}>Text ${body} to ${number}</a>
+          `
+        } else {
+          document.body.innerHTML +=  `
+          <a href=${href}>Text ${number}</a>
+          `
+        }
       } else {
         let number = command.replace(/[^0-9+,;]+/g, '')
         let href = "tel:" + number
